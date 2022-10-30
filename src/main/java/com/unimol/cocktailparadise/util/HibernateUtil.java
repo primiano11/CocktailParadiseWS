@@ -1,6 +1,7 @@
 package com.unimol.cocktailparadise.util;
 
 import com.unimol.cocktailparadise.entities.Drink;
+import com.unimol.cocktailparadise.entities.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -33,6 +34,7 @@ public class HibernateUtil {
                 configuration.setProperties(settings);
 
                 configuration.addAnnotatedClass(Drink.class);
+                configuration.addAnnotatedClass(User.class);
 
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()

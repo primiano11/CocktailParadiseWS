@@ -1,21 +1,20 @@
 package com.unimol.cocktailparadise.services;
 
 import com.unimol.cocktailparadise.util.HibernateUtil;
-import org.hibernate.Hibernate;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
-public class DBInitializer {
+public class DBService {
 
-    public String dbInitialize(){
+    public String dbRefresh(){
+
         Session session = null;
+
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
+            session.close();
+        } catch (HibernateException e) {
+            throw new RuntimeException(e);
         }
         return "OK";
     }
