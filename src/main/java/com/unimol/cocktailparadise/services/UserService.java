@@ -1,6 +1,7 @@
 package com.unimol.cocktailparadise.services;
 
 import com.unimol.cocktailparadise.entities.User;
+import com.unimol.cocktailparadise.util.AES;
 import com.unimol.cocktailparadise.util.HibernateUtil;
 import com.unimol.cocktailparadise.util.Utilities;
 import org.hibernate.Session;
@@ -13,6 +14,7 @@ import java.util.List;
 public class UserService {
 
     Transaction transaction = null;
+    public String encKey = "cocktailparadisePM";
 
 
     public int registerUser(String username, String mail, String password) {
@@ -52,10 +54,9 @@ public class UserService {
     }
 
 
-    public Boolean isUserAlreadyRegistered(String mail){
+    private Boolean isUserAlreadyRegistered(String mail){
 
         Session session = null;
-
         Boolean flag = false;
 
 
@@ -78,4 +79,41 @@ public class UserService {
 
         return flag;
     }
+
+
+    public int login(String mail, String password){
+
+        Session session = null;
+        int result = 0;
+
+
+        if(isUserAlreadyRegistered(mail)){
+
+            try {
+                session = HibernateUtil.getSessionFactory().openSession();
+                String hql = "from User where mail='" + mail + "'";
+                Query query = session.createQuery(hql);
+                User user = (User) query.uniqueResult();
+                String temp = user.getPassword();
+                String decPassword = AES.decrypt(temp, encKey);
+
+                if(decPassword.equals(password)){
+                    result = user.getId();
+                    return result;
+                }
+
+                session.close();
+            } catch (Exception e) {
+                if (transaction != null) {
+                    transaction.rollback();
+                }
+            }
+
+        }
+
+        return result;
+
+    }
+
+
 }
