@@ -23,7 +23,7 @@ public class HibernateUtil {
                 settings.put(Environment.URL, "jdbc:mysql://localhost:3306/cocktailparadise?createDatabaseIfNotExist=true&serverTimezone=Europe/Rome&useLegacyDatetimeCode=false&useSSL=false");
                 settings.put(Environment.USER, "root");
                 settings.put(Environment.PASS, "Prova123");
-                settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
+                settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
 
                 settings.put(Environment.SHOW_SQL, "true");
 

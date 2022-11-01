@@ -10,12 +10,12 @@ import javax.ws.rs.core.MediaType;
 @Path("/db")
 public class DBController {
 
-    private DBService dbInitializer = new DBService();
+    private DBService dbService = new DBService();
 
     @GET
     @Path("refresh")
     @Produces(MediaType.TEXT_PLAIN)
     public String refresh(){
-        return dbInitializer.dbRefresh();
+        return dbService.dbRefresh();
     }
 }
