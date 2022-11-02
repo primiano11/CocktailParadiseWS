@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c29bed0-242c-47f7-931d-c52ff42c18ac" name="Changes" comment="Implementazione API login account">
+    <list default="true" id="6c29bed0-242c-47f7-931d-c52ff42c18ac" name="Changes" comment=".">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/controllers/DrinkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/controllers/DrinkController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/entities/Drink.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/entities/Drink.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/services/DrinkService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/services/DrinkService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -3,10 +3,7 @@ package com.unimol.cocktailparadise.controllers;
 import com.unimol.cocktailparadise.services.DrinkService;
 import org.json.JSONObject;
 
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 @Path("/drink")
@@ -35,4 +32,26 @@ public class DrinkController {
 
     }
 
+
+    @GET
+    @Path("check")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String check(@QueryParam("idDrink") int idDrink, @QueryParam("userId") int userId){
+
+
+        String result ="";
+
+        if(!(drinkService.isDrinkAlreadyExisting2(idDrink, userId))){
+            result = "vai cazzo";
+            return result;
+        }
+
+        if(drinkService.isDrinkAlreadyExisting2(idDrink, userId)){
+            result = "mi disp";
+            return result;
+        }
+
+        return result;
+
+    }
 }

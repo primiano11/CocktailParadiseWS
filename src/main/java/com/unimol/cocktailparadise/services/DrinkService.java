@@ -4,8 +4,12 @@ import com.unimol.cocktailparadise.entities.Drink;
 import com.unimol.cocktailparadise.entities.User;
 import com.unimol.cocktailparadise.util.HibernateUtil;
 import com.unimol.cocktailparadise.util.Utilities;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.LogicalExpression;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 
 import java.util.List;
@@ -20,6 +24,10 @@ public class DrinkService {
         int flag = 0;
 
         Session session = null;
+
+        /*if(isDrinkAlreadyExisting(idDrink, userId)){
+            return 0;
+        }*/
 
 
         try {
@@ -50,28 +58,45 @@ public class DrinkService {
     }
 
 
-    private Boolean isDrinkAlreadyExisting(int idDrink, int userId){
+    public String isDrinkAlreadyExisting(int idDrink, int userId){
+
+        Session session = null;
+
+        session = HibernateUtil.getSessionFactory().openSession();
+
+        Criteria criteria = session.createCriteria(Drink.class);
+
+        Criterion idDrinkCr = Restrictions.eq("idDrink", idDrink);
+        Criterion userIdCr = Restrictions.eq("userId", userId);
+        LogicalExpression andExp = Restrictions.and(idDrinkCr, userIdCr);
+        criteria.add(andExp);
+        List results = criteria.list();
+        session.close();
+        String res = results.toString();
+        return res = results.toString();
+
+
+    }
+
+    public Boolean isDrinkAlreadyExisting2(int idDrink, int userId){
 
         Boolean flag = false;
         Session session = null;
 
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            String hql = "from Drink where idDrink='" + idDrink + "'" + " and userId='" + userId +"'";
-            Query query = session.createQuery(hql);
-            List results = query.list();
+        session = HibernateUtil.getSessionFactory().openSession();
 
-            if(results.size() > 0){
-                flag = true;
-            }
+        Criteria criteria = session.createCriteria(User.class);
+        Criterion userIdCr = Restrictions.eq("id", userId);
+        criteria.add(userIdCr);
+        User user = (User) criteria.uniqueResult();
 
-            session.close();
-
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
+        List<Drink> userDrinks = user.getDrinks();
+        for (Drink d:userDrinks) {
+            if(d.getIdDrink() == idDrink){
+                return true;
             }
         }
+        session.close();
 
         return flag;
     }
