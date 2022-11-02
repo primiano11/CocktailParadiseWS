@@ -34,7 +34,7 @@ public class Drink {
     private String strInstructionsIT;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "userId", nullable = false)
     private User user;
 
     public Drink(int idDrink, String strDrink, String strCategory, String strAlcoholic, String strGlass, String strInstructionsIT){
