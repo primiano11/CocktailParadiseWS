@@ -30,7 +30,7 @@ public class User {
     @NotNull
     private String password;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Drink> drinks;
 
     public User(String username, String mail, String password){

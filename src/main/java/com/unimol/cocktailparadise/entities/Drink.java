@@ -33,4 +33,17 @@ public class Drink {
     @Column(name = "strInstructionsIT")
     private String strInstructionsIT;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    public Drink(int idDrink, String strDrink, String strCategory, String strAlcoholic, String strGlass, String strInstructionsIT){
+        this.idDrink = idDrink;
+        this.strDrink = strDrink;
+        this.strCategory = strCategory;
+        this.strAlcoholic = strAlcoholic;
+        this.strGlass = strGlass;
+        this.strInstructionsIT = strInstructionsIT;
+    }
+
 }
