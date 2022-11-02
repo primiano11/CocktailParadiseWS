@@ -25,10 +25,6 @@ public class DrinkService {
 
         Session session = null;
 
-        /*if(isDrinkAlreadyExisting(idDrink, userId)){
-            return 0;
-        }*/
-
 
         try {
 
@@ -58,27 +54,7 @@ public class DrinkService {
     }
 
 
-    public String isDrinkAlreadyExisting(int idDrink, int userId){
-
-        Session session = null;
-
-        session = HibernateUtil.getSessionFactory().openSession();
-
-        Criteria criteria = session.createCriteria(Drink.class);
-
-        Criterion idDrinkCr = Restrictions.eq("idDrink", idDrink);
-        Criterion userIdCr = Restrictions.eq("userId", userId);
-        LogicalExpression andExp = Restrictions.and(idDrinkCr, userIdCr);
-        criteria.add(andExp);
-        List results = criteria.list();
-        session.close();
-        String res = results.toString();
-        return res = results.toString();
-
-
-    }
-
-    public Boolean isDrinkAlreadyExisting2(int idDrink, int userId){
+    public Boolean isDrinkAlreadyExisting(int idDrink, int userId){
 
         Boolean flag = false;
         Session session = null;

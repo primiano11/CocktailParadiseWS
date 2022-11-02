@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c29bed0-242c-47f7-931d-c52ff42c18ac" name="Changes" comment=".">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="6c29bed0-242c-47f7-931d-c52ff42c18ac" name="Changes" comment="Implementata un' API di controllo">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/controllers/DrinkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/controllers/DrinkController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/entities/Drink.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/entities/Drink.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/entities/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/services/DrinkService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/services/DrinkService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -141,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667343072656</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Implementata un' API di controllo">
+      <created>1667428169981</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1667428169981</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -160,6 +164,7 @@
     <MESSAGE value="Prima implementazione generale del backend" />
     <MESSAGE value="Implementazione API di registrazione account" />
     <MESSAGE value="Implementazione API login account" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementazione API login account" />
+    <MESSAGE value="Implementata un' API di controllo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementata un' API di controllo" />
   </component>
 </project>
