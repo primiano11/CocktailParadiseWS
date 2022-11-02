@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c29bed0-242c-47f7-931d-c52ff42c18ac" name="Changes" comment="Implementata un' API di controllo">
+    <list default="true" id="6c29bed0-242c-47f7-931d-c52ff42c18ac" name="Changes" comment="API di controllo integrata in quella di salvataggio">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/controllers/DrinkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/controllers/DrinkController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/services/DrinkService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/services/DrinkService.java" afterDir="false" />
     </list>
@@ -145,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667428169981</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="API di controllo integrata in quella di salvataggio">
+      <created>1667428642766</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1667428642766</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -165,6 +173,7 @@
     <MESSAGE value="Implementazione API di registrazione account" />
     <MESSAGE value="Implementazione API login account" />
     <MESSAGE value="Implementata un' API di controllo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementata un' API di controllo" />
+    <MESSAGE value="API di controllo integrata in quella di salvataggio" />
+    <option name="LAST_COMMIT_MESSAGE" value="API di controllo integrata in quella di salvataggio" />
   </component>
 </project>

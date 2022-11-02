@@ -45,4 +45,30 @@ public class DrinkController {
         return jsonObject.toString();
 
     }
+
+    @POST
+    @Path("deletedrink")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String deleteDrink(@QueryParam("idDrink") int idDrink, @QueryParam("userId") int userId){
+
+        JSONObject jsonObject = new JSONObject();
+
+        if(drinkService.isDrinkAlreadyExisting(idDrink, userId)){
+            drinkService.deleteDrink(idDrink, userId);
+            jsonObject.put("tag", "deleteDrink");
+            jsonObject.put("status", true);
+            jsonObject.put("message", "Hai rimosso il drink.");
+            return jsonObject.toString();
+        } else {
+            jsonObject.put("tag", "deleteDrink");
+            jsonObject.put("status", false);
+            jsonObject.put("message", "Il drink non esiste.");
+            return jsonObject.toString();
+        }
+
+    }
+
+
+
+
 }

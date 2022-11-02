@@ -76,4 +76,32 @@ public class DrinkService {
 
         return flag;
     }
+
+    public void deleteDrink(int idDrink, int userId){
+
+        Session session = null;
+        int offsetToDelete = 0;
+
+
+        session = HibernateUtil.getSessionFactory().openSession();
+
+        Criteria criteria = session.createCriteria(User.class);
+        Criterion userIdCr = Restrictions.eq("id", userId);
+        criteria.add(userIdCr);
+        User user = (User) criteria.uniqueResult();
+
+        List<Drink> userDrinks = user.getDrinks();
+        for (Drink d:userDrinks) {
+            if(d.getIdDrink() == idDrink){
+                offsetToDelete = d.getId();
+            }
+        }
+
+        transaction = session.beginTransaction();
+        String hql = "delete from Drink where id='" + offsetToDelete + "'";
+        int deletedDrink = session.createQuery(hql).executeUpdate();
+        transaction.commit();
+        session.close();
+
+    }
 }
