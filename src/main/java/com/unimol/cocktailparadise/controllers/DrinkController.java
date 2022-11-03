@@ -1,10 +1,15 @@
 package com.unimol.cocktailparadise.controllers;
 
+import com.google.gson.Gson;
+import com.unimol.cocktailparadise.entities.Drink;
 import com.unimol.cocktailparadise.services.DrinkService;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path("/drink")
 public class DrinkController {
@@ -66,6 +71,53 @@ public class DrinkController {
             return jsonObject.toString();
         }
 
+    }
+
+    @GET
+    @Path("getalldrinks")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllDrinks(@QueryParam("userId") int userId){
+
+        String response = "";
+        JSONObject jsonObject = new JSONObject();
+        JSONArray allDataArray = new JSONArray();
+        List<Drink> userDrinks = drinkService.getAllDrinks(userId);
+
+        if (!(userDrinks.size() ==0)) {
+
+            for(int index = 0; index < userDrinks.size(); index++) {
+                JSONObject eachData = new JSONObject();
+                try {
+                    eachData.put("id", userDrinks.get(index).getId());
+                    eachData.put("idDrink", userDrinks.get(index).getIdDrink());
+                    eachData.put("strAlcoholic", userDrinks.get(index).getStrAlcoholic());
+                    eachData.put("strCategory", userDrinks.get(index).getStrCategory());
+                    eachData.put("strDrink", userDrinks.get(index).getStrDrink());
+                    eachData.put("strGlass", userDrinks.get(index).getStrGlass());
+                    eachData.put("strInstructionsIT", userDrinks.get(index).getStrInstructionsIT());
+                    eachData.put("userId", userDrinks.get(index).getUserId());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                allDataArray.put(eachData);
+            }
+        } else {
+            jsonObject.put("tag", "getAllDrinks");
+            jsonObject.put("status", false);
+            jsonObject.put("message", "Non hai ancora salvato nessun drink");
+            response = jsonObject.toString();
+            return response;
+        }
+
+        try {
+            jsonObject.put("data", allDataArray);
+            response = jsonObject.toString();
+            return response;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return response;
     }
 
 

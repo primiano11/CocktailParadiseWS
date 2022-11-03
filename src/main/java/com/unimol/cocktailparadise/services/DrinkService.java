@@ -104,4 +104,23 @@ public class DrinkService {
         session.close();
 
     }
+
+    public List<Drink> getAllDrinks(int userId){
+
+        Session session = null;
+        int offsetToDelete = 0;
+
+
+        session = HibernateUtil.getSessionFactory().openSession();
+
+        Criteria criteria = session.createCriteria(User.class);
+        Criterion userIdCr = Restrictions.eq("id", userId);
+        criteria.add(userIdCr);
+        User user = (User) criteria.uniqueResult();
+        session.close();
+
+        return user.getDrinks();
+
+    }
+
 }
