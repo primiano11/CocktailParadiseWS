@@ -122,6 +122,31 @@ public class DrinkController {
     }
 
 
+    @POST
+    @Path("deletealldrinks")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String deleteAllDrinks(@QueryParam("userId") int userId){
+
+        String response = "";
+        JSONObject jsonObject = new JSONObject();
+
+        if(drinkService.getAllDrinks(userId).size() != 0){
+            drinkService.deleteAllDrinks(userId);
+            jsonObject.put("tag", "deleteAllDrinks");
+            jsonObject.put("status", true);
+            jsonObject.put("message", "Hai rimosso tutti i drink");
+            response = jsonObject.toString();
+            return response;
+        } else {
+            jsonObject.put("tag", "deleteAllDrinks");
+            jsonObject.put("status", false);
+            jsonObject.put("message", "ERRORE");
+            response = jsonObject.toString();
+            return response;
+        }
+
+    }
+
 
 
 }

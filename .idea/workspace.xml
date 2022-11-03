@@ -7,7 +7,6 @@
     <list default="true" id="6c29bed0-242c-47f7-931d-c52ff42c18ac" name="Changes" comment="Implementazione della proprietà i immagine del drink">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/controllers/DrinkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/controllers/DrinkController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/entities/Drink.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/entities/Drink.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/services/DrinkService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/services/DrinkService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -170,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667433669789</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Implementazione della proprietà i immagine del drink">
+      <created>1667436531331</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1667436531331</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -123,4 +123,17 @@ public class DrinkService {
 
     }
 
+    public void deleteAllDrinks(int userId){
+
+        Session session = null;
+
+        session = HibernateUtil.getSessionFactory().openSession();
+        transaction = session.beginTransaction();
+        String hql = "delete from Drink where userId='" + userId + "'";
+        int deletedDrink = session.createQuery(hql).executeUpdate();
+        transaction.commit();
+        session.close();
+
+    }
+
 }
