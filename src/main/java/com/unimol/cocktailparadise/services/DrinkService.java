@@ -19,7 +19,7 @@ public class DrinkService {
     Transaction transaction = null;
 
 
-    public int saveDrink(int idDrink, String strDrink, String strCategory, String strAlcoholic, String strGlass, String strInstructionsIT, int userId) {
+    public int saveDrink(int idDrink, String strDrink, String strCategory, String strAlcoholic, String strGlass, String strInstructionsIT, String strDrinkThumb, int userId) {
 
         int flag = 0;
 
@@ -30,7 +30,7 @@ public class DrinkService {
 
             session = HibernateUtil.getSessionFactory().openSession();
 
-            Drink newDrink = new Drink(idDrink, strDrink, strCategory, strAlcoholic, strGlass, strInstructionsIT);
+            Drink newDrink = new Drink(idDrink, strDrink, strCategory, strAlcoholic, strGlass, strInstructionsIT, strDrinkThumb);
             String hql = "from User where id='" + userId + "'";
             Query query = session.createQuery(hql);
             User user = (User) query.uniqueResult();

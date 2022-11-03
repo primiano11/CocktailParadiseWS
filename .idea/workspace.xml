@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c29bed0-242c-47f7-931d-c52ff42c18ac" name="Changes" comment="Implementazione API per rimuovere un drink">
+    <list default="true" id="6c29bed0-242c-47f7-931d-c52ff42c18ac" name="Changes" comment="Implementazione della proprietà i immagine del drink">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/controllers/DrinkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/controllers/DrinkController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/entities/Drink.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/entities/Drink.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/services/DrinkService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/services/DrinkService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -162,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667430531697</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Implementazione API per ottenere tutti i drink">
+      <created>1667433669789</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1667433669789</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -184,6 +192,8 @@
     <MESSAGE value="Implementata un' API di controllo" />
     <MESSAGE value="API di controllo integrata in quella di salvataggio" />
     <MESSAGE value="Implementazione API per rimuovere un drink" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementazione API per rimuovere un drink" />
+    <MESSAGE value="Implementazione API per ottenere tutti i drink" />
+    <MESSAGE value="Implementazione della proprietà i immagine del drink" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementazione della proprietà i immagine del drink" />
   </component>
 </project>

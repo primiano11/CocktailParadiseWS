@@ -22,19 +22,19 @@ public class DrinkController {
     public String saveDrink(@QueryParam("idDrink") int idDrink, @QueryParam("strDrink") String strDrink,
                             @QueryParam("strCategory") String strCategory, @QueryParam("strAlcoholic") String strAlcoholic,
                             @QueryParam("strGlass") String strGlass, @QueryParam("strInstructionsIT") String strInstructionsIT,
-                            @QueryParam("userId") int userId){
+                            @QueryParam("strDrinkThumb") String strDrinkThumb, @QueryParam("userId") int userId){
 
 
         JSONObject jsonObject = new JSONObject();
 
         if(!(drinkService.isDrinkAlreadyExisting(idDrink, userId))){
-            if(drinkService.saveDrink(idDrink, strDrink, strCategory, strAlcoholic, strGlass, strInstructionsIT, userId) == 1){
+            if(drinkService.saveDrink(idDrink, strDrink, strCategory, strAlcoholic, strGlass, strInstructionsIT, strDrinkThumb, userId) == 1){
                 jsonObject.put("tag", "saveDrink");
                 jsonObject.put("status", true);
                 jsonObject.put("message", "Cocktail aggiunto!");
                 return jsonObject.toString();
 
-            } else if (drinkService.saveDrink(idDrink, strDrink, strCategory, strAlcoholic, strGlass, strInstructionsIT, userId) == 0) {
+            } else if (drinkService.saveDrink(idDrink, strDrink, strCategory, strAlcoholic, strGlass, strInstructionsIT, strDrinkThumb, userId) == 0) {
                 jsonObject.put("tag", "saveDrink");
                 jsonObject.put("status", false);
                 jsonObject.put("message", "ERRORE");
@@ -95,6 +95,7 @@ public class DrinkController {
                     eachData.put("strDrink", userDrinks.get(index).getStrDrink());
                     eachData.put("strGlass", userDrinks.get(index).getStrGlass());
                     eachData.put("strInstructionsIT", userDrinks.get(index).getStrInstructionsIT());
+                    eachData.put("strDrinkThumb", userDrinks.get(index).getStrDrinkThumb());
                     eachData.put("userId", userDrinks.get(index).getUserId());
                 } catch (JSONException e) {
                     e.printStackTrace();

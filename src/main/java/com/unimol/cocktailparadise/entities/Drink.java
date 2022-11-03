@@ -32,8 +32,11 @@ public class Drink {
     @Column(name = "strGlass")
     private String strGlass;
 
-    @Column(name = "strInstructionsIT")
+    @Column(name = "strInstructionsIT",  length = 1000)
     private String strInstructionsIT;
+
+    @Column(name = "strDrinkThumb")
+    private String strDrinkThumb;
 
     @Column(name="userId", insertable=false, updatable=false)
     private int userId;
@@ -42,13 +45,14 @@ public class Drink {
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 
-    public Drink(int idDrink, String strDrink, String strCategory, String strAlcoholic, String strGlass, String strInstructionsIT){
+    public Drink(int idDrink, String strDrink, String strCategory, String strAlcoholic, String strGlass, String strInstructionsIT, String strDrinkThumb){
         this.idDrink = idDrink;
         this.strDrink = strDrink;
         this.strCategory = strCategory;
         this.strAlcoholic = strAlcoholic;
         this.strGlass = strGlass;
         this.strInstructionsIT = strInstructionsIT;
+        this.strDrinkThumb = strDrinkThumb;
     }
 
 }
