@@ -23,7 +23,7 @@ public class UserController {
         password = AES.encrypt(password, userService.encKey);
 
         if (userService.registerUser(username, mail, password) == 2){
-            response = Utilities.constructJSON("register", true);
+            response = Utilities.constructJSONMessage("register", true, "Registrazione avvenuta con successo");
             return response;
         }
         if (userService.registerUser(username, mail, password) == 0){
