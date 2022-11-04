@@ -81,10 +81,10 @@ public class UserService {
     }
 
 
-    public int login(String mail, String password){
+    public User login(String mail, String password){
 
         Session session = null;
-        int result = 0;
+        User user = null;
 
 
         if(isUserAlreadyRegistered(mail)){
@@ -93,13 +93,12 @@ public class UserService {
                 session = HibernateUtil.getSessionFactory().openSession();
                 String hql = "from User where mail='" + mail + "'";
                 Query query = session.createQuery(hql);
-                User user = (User) query.uniqueResult();
-                String temp = user.getPassword();
+                User newUser = (User) query.uniqueResult();
+                String temp = newUser.getPassword();
                 String decPassword = AES.decrypt(temp, encKey);
 
                 if(decPassword.equals(password)){
-                    result = user.getId();
-                    return result;
+                    user = newUser;
                 }
 
                 session.close();
@@ -111,7 +110,7 @@ public class UserService {
 
         }
 
-        return result;
+        return user;
 
     }
 

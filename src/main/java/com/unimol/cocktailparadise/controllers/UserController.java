@@ -1,5 +1,6 @@
 package com.unimol.cocktailparadise.controllers;
 
+import com.unimol.cocktailparadise.entities.User;
 import com.unimol.cocktailparadise.services.UserService;
 import com.unimol.cocktailparadise.util.AES;
 import com.unimol.cocktailparadise.util.Utilities;
@@ -44,18 +45,20 @@ public class UserController {
     public String login(@QueryParam("mail") String mail, @QueryParam("password") String password){
 
         JSONObject jsonObject = new JSONObject();
-        int flag = userService.login(mail, password);
+        User user = userService.login(mail, password);
 
-        if(flag != 0){
+        if(user != null){
             jsonObject.put("tag", "login");
             jsonObject.put("status", true);
-            jsonObject.put("userId", flag);
+            jsonObject.put("userId", user.getId());
+            jsonObject.put("username", user.getUsername());
             jsonObject.put("message", "Utente trovato");
         }
         else {
             jsonObject.put("tag", "login");
             jsonObject.put("status", false);
-            jsonObject.put("userId", flag);
+            jsonObject.put("userId", 0);
+            jsonObject.put("username", "");
             jsonObject.put("message", "Credenziali errate");
         }
 
