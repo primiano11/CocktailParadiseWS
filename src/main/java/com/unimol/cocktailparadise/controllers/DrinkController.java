@@ -111,7 +111,7 @@ public class DrinkController {
         }
 
         try {
-            jsonObject.put("data", allDataArray);
+            jsonObject.put("drinks", allDataArray);
             response = jsonObject.toString();
             return response;
         } catch (JSONException e) {
