@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c29bed0-242c-47f7-931d-c52ff42c18ac" name="Changes" comment="Bugfix">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/util/OTPConstants.java" afterDir="false" />
+    <list default="true" id="6c29bed0-242c-47f7-931d-c52ff42c18ac" name="Changes" comment="Implementato OTP">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/controllers/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unimol/cocktailparadise/services/UserService.java" afterDir="false" />
     </list>
@@ -206,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667525900525</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Implementato OTP">
+      <created>1667677272377</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1667677272377</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -232,6 +237,7 @@
     <MESSAGE value="Implementazione API per eliminare tutti i drink" />
     <MESSAGE value="." />
     <MESSAGE value="Bugfix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bugfix" />
+    <MESSAGE value="Implementato OTP" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementato OTP" />
   </component>
 </project>

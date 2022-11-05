@@ -100,7 +100,7 @@ public class UserController {
             jsonObject.put("tag", "recoverPassword");
             jsonObject.put("status", false);
             jsonObject.put("otpValue", flag);
-            jsonObject.put("message", "Il campo non può essere vuoto!");
+            jsonObject.put("message", "Non c'è un account associato a questa mail!");
 
             response = jsonObject.toString();
             return response;
@@ -120,6 +120,41 @@ public class UserController {
 
 
         return response;
+    }
+
+    @POST
+    @Path("changepassword")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String changePassword(@QueryParam("mail") String mail, @QueryParam("password") String password){
+
+        JSONObject jsonObject = new JSONObject();
+        String response = "";
+
+        password = AES.encrypt(password, userService.encKey);
+
+
+
+        int result = userService.changePassword(mail, password);
+
+        if(result == 1){
+            jsonObject.put("tag", "changePassword");
+            jsonObject.put("status", true);
+            jsonObject.put("otpValue", result);
+            jsonObject.put("message", "La password è stata cambiata con successo");
+            response = jsonObject.toString();
+            return response;
+        }
+
+        else {
+            jsonObject.put("tag", "changePassword");
+            jsonObject.put("status", false);
+            jsonObject.put("otpValue", result);
+            jsonObject.put("message", "C'è stato un errore nel cambio della tua password!");
+            response = jsonObject.toString();
+            return response;
+        }
+
+
     }
 
 }

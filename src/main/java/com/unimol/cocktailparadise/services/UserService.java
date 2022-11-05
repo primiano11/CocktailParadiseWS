@@ -177,20 +177,31 @@ public class UserService {
     }
 
 
-    public Boolean checkOtp(int insertedOtp, int sendedOtp){
 
-        if(insertedOtp == sendedOtp){
-            return true;
-        } else {
+    public int changePassword(String mail, String password) {
 
-            return false;
+        int flag = 0;
+
+        Session session = null;
+
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            String hql = "update User set password = '" + password + "'" + " where mail='" + mail + "'";
+            int changePasswordQuery = session.createQuery(hql).executeUpdate();
+            transaction.commit();
+            session.close();
+            flag = 1;
+            return flag;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
         }
 
+        return flag;
+
     }
-
-
-
-
 
 
 
