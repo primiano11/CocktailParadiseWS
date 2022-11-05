@@ -3,11 +3,18 @@ package com.unimol.cocktailparadise.controllers;
 import com.unimol.cocktailparadise.entities.User;
 import com.unimol.cocktailparadise.services.UserService;
 import com.unimol.cocktailparadise.util.AES;
+import com.unimol.cocktailparadise.util.OTPConstants;
 import com.unimol.cocktailparadise.util.Utilities;
 import org.json.JSONObject;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.sql.SQLException;
+import java.util.Properties;
+import java.util.Random;
 
 @Path("/user")
 public class UserController {
@@ -64,6 +71,55 @@ public class UserController {
 
         return jsonObject.toString();
 
+    }
+
+    @GET
+    @Path("passwordrecovery")
+    @Produces
+    public String passwordRecovery(@QueryParam("mail") String mail){
+
+
+        JSONObject jsonObject = new JSONObject();
+
+        String response = "";
+
+        int flag = userService.passwordRecovery(mail);
+
+        if(flag == 0) {
+
+            jsonObject.put("tag", "recoverPassword");
+            jsonObject.put("status", false);
+            jsonObject.put("otpValue", flag);
+            jsonObject.put("message", "Il campo mail non può essere vuoto!");
+            response = jsonObject.toString();
+            return response;
+        }
+
+        if(flag == 1){
+
+            jsonObject.put("tag", "recoverPassword");
+            jsonObject.put("status", false);
+            jsonObject.put("otpValue", flag);
+            jsonObject.put("message", "Il campo non può essere vuoto!");
+
+            response = jsonObject.toString();
+            return response;
+        }
+
+        if ((flag > 0)) {
+
+            jsonObject.put("tag", "recoverPassword");
+            jsonObject.put("status", true);
+            jsonObject.put("otpValue", flag);
+            jsonObject.put("message", "OTP ok");
+
+            response = jsonObject.toString();
+            return response;
+
+        }
+
+
+        return response;
     }
 
 }
