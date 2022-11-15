@@ -9,7 +9,7 @@ public class Utilities {
         return txt != null && txt.trim().length() > 0 ? true : false;
     }
 
-    public static String constructJSONMessage(String tag, boolean status,String err_msg) {
+    public static String constructJSONMessage(String tag, boolean status, String err_msg) {
         JSONObject obj = new JSONObject();
         try {
             obj.put("tag", tag);
@@ -19,17 +19,6 @@ public class Utilities {
             System.err.println(jsonException.getMessage());
         }
         return obj.toString();
-    }
-
-    public static String constructJSON(String tag, boolean status) {
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("tag", tag);
-            jsonObject.put("status", new Boolean(status));
-        } catch (JSONException jsonException) {
-            System.err.println(jsonException.getMessage());
-        }
-        return jsonObject.toString();
     }
 
 }

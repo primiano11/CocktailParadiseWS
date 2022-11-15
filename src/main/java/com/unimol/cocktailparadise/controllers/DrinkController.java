@@ -1,6 +1,5 @@
 package com.unimol.cocktailparadise.controllers;
 
-import com.google.gson.Gson;
 import com.unimol.cocktailparadise.entities.Drink;
 import com.unimol.cocktailparadise.services.DrinkService;
 import org.json.JSONArray;
@@ -22,13 +21,13 @@ public class DrinkController {
     public String saveDrink(@QueryParam("idDrink") int idDrink, @QueryParam("strDrink") String strDrink,
                             @QueryParam("strCategory") String strCategory, @QueryParam("strAlcoholic") String strAlcoholic,
                             @QueryParam("strGlass") String strGlass, @QueryParam("strInstructionsIT") String strInstructionsIT,
-                            @QueryParam("strDrinkThumb") String strDrinkThumb, @QueryParam("userId") int userId){
+                            @QueryParam("strDrinkThumb") String strDrinkThumb, @QueryParam("userId") int userId) {
 
 
         JSONObject jsonObject = new JSONObject();
 
-        if(!(drinkService.isDrinkAlreadyExisting(idDrink, userId))){
-            if(drinkService.saveDrink(idDrink, strDrink, strCategory, strAlcoholic, strGlass, strInstructionsIT, strDrinkThumb, userId) == 1){
+        if (!(drinkService.isDrinkAlreadyExisting(idDrink, userId))) {
+            if (drinkService.saveDrink(idDrink, strDrink, strCategory, strAlcoholic, strGlass, strInstructionsIT, strDrinkThumb, userId) == 1) {
                 jsonObject.put("tag", "saveDrink");
                 jsonObject.put("status", true);
                 jsonObject.put("message", "Cocktail aggiunto!");
@@ -54,11 +53,11 @@ public class DrinkController {
     @POST
     @Path("deletedrink")
     @Produces(MediaType.APPLICATION_JSON)
-    public String deleteDrink(@QueryParam("idDrink") int idDrink, @QueryParam("userId") int userId){
+    public String deleteDrink(@QueryParam("idDrink") int idDrink, @QueryParam("userId") int userId) {
 
         JSONObject jsonObject = new JSONObject();
 
-        if(drinkService.isDrinkAlreadyExisting(idDrink, userId)){
+        if (drinkService.isDrinkAlreadyExisting(idDrink, userId)) {
             drinkService.deleteDrink(idDrink, userId);
             jsonObject.put("tag", "deleteDrink");
             jsonObject.put("status", true);
@@ -76,16 +75,16 @@ public class DrinkController {
     @GET
     @Path("getalldrinks")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getAllDrinks(@QueryParam("userId") int userId){
+    public String getAllDrinks(@QueryParam("userId") int userId) {
 
         String response = "";
         JSONObject jsonObject = new JSONObject();
         JSONArray allDataArray = new JSONArray();
         List<Drink> userDrinks = drinkService.getAllDrinks(userId);
 
-        if (!(userDrinks.size() ==0)) {
+        if (!(userDrinks.size() == 0)) {
 
-            for(int index = 0; index < userDrinks.size(); index++) {
+            for (int index = 0; index < userDrinks.size(); index++) {
                 JSONObject eachData = new JSONObject();
                 try {
                     eachData.put("id", userDrinks.get(index).getId());
@@ -125,12 +124,12 @@ public class DrinkController {
     @POST
     @Path("deletealldrinks")
     @Produces(MediaType.APPLICATION_JSON)
-    public String deleteAllDrinks(@QueryParam("userId") int userId){
+    public String deleteAllDrinks(@QueryParam("userId") int userId) {
 
         String response = "";
         JSONObject jsonObject = new JSONObject();
 
-        if(drinkService.getAllDrinks(userId).size() != 0){
+        if (drinkService.getAllDrinks(userId).size() != 0) {
             drinkService.deleteAllDrinks(userId);
             jsonObject.put("tag", "deleteAllDrinks");
             jsonObject.put("status", true);
@@ -146,7 +145,6 @@ public class DrinkController {
         }
 
     }
-
 
 
 }

@@ -6,7 +6,7 @@ import org.hibernate.Session;
 
 public class DBService {
 
-    public String dbRefresh(){
+    public String dbRefresh() {
 
         Session session = null;
 

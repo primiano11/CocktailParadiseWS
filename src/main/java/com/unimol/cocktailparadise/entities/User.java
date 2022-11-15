@@ -33,7 +33,7 @@ public class User {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
     private List<Drink> drinks;
 
-    public User(String username, String mail, String password){
+    public User(String username, String mail, String password) {
         this.username = username;
         this.mail = mail;
         this.password = password;

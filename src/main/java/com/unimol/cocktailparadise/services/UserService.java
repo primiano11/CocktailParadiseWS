@@ -12,13 +12,9 @@ import org.hibernate.query.Query;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+import java.util.List;
 import java.util.Properties;
 import java.util.Random;
-
-import java.sql.SQLException;
-import java.util.List;
 
 public class UserService {
 
@@ -30,13 +26,13 @@ public class UserService {
 
         int flag = 0;
 
-        if (!(Utilities.isNotNull(username) && Utilities.isNotNull(mail) && Utilities.isNotNull(password))){
+        if (!(Utilities.isNotNull(username) && Utilities.isNotNull(mail) && Utilities.isNotNull(password))) {
             //"ERRORE";
             flag = 0;
             return flag;
         }
 
-        if(isUserAlreadyRegistered(mail)){
+        if (isUserAlreadyRegistered(mail)) {
             //"Sei già registrato!";
             flag = 1;
             return flag;
@@ -63,7 +59,7 @@ public class UserService {
     }
 
 
-    public Boolean isUserAlreadyRegistered(String mail){
+    public Boolean isUserAlreadyRegistered(String mail) {
 
         Session session = null;
         Boolean flag = false;
@@ -75,7 +71,7 @@ public class UserService {
             Query query = session.createQuery(hql);
             List results = query.list();
 
-            if(results.size() > 0){
+            if (results.size() > 0) {
                 flag = true;
             }
 
@@ -90,13 +86,13 @@ public class UserService {
     }
 
 
-    public User login(String mail, String password){
+    public User login(String mail, String password) {
 
         Session session = null;
         User user = null;
 
 
-        if(isUserAlreadyRegistered(mail)){
+        if (isUserAlreadyRegistered(mail)) {
 
             try {
                 session = HibernateUtil.getSessionFactory().openSession();
@@ -106,7 +102,7 @@ public class UserService {
                 String temp = newUser.getPassword();
                 String decPassword = AES.decrypt(temp, encKey);
 
-                if(decPassword.equals(password)){
+                if (decPassword.equals(password)) {
                     user = newUser;
                 }
 
@@ -124,7 +120,7 @@ public class UserService {
     }
 
 
-    public int passwordRecovery(String mail){
+    public int passwordRecovery(String mail) {
 
         int flag = 0;
 
@@ -136,7 +132,7 @@ public class UserService {
 
             Properties props = new Properties();
             props.put("mail.smtp.starttls.enable", "true");
-            props.put("mail.smtp.host",  OTPConstants.SMTP_HOST);
+            props.put("mail.smtp.host", OTPConstants.SMTP_HOST);
             props.put("mail.smtp.socketFactory.port", OTPConstants.SMTP_SFP);
             props.put("mail.smtp.socketFactory.class", OTPConstants.SMTP_SFC);
             props.put("mail.smtp.auth", OTPConstants.SMTP_AUTH);
@@ -151,12 +147,12 @@ public class UserService {
             try {
                 MimeMessage message = new MimeMessage(session);
                 message.setFrom(new InternetAddress(OTPConstants.emailManager));
-                message.addRecipient(Message.RecipientType.TO,  new InternetAddress(mail));
+                message.addRecipient(Message.RecipientType.TO, new InternetAddress(mail));
                 message.setSubject("Recupero Password - CocktailParadise");
                 message.setText("Il tuo codice OTP: " + otpValue);
 
                 Transport transport = session.getTransport("smtp");
-                transport.connect(OTPConstants.SMTP_HOST,OTPConstants.emailManager, OTPConstants.emailPassword);
+                transport.connect(OTPConstants.SMTP_HOST, OTPConstants.emailManager, OTPConstants.emailPassword);
                 transport.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
                 transport.close();
 
@@ -175,7 +171,6 @@ public class UserService {
 
         return flag;
     }
-
 
 
     public int changePassword(String mail, String password) {
@@ -202,12 +197,6 @@ public class UserService {
         return flag;
 
     }
-
-
-
-
-
-
 
 
 }

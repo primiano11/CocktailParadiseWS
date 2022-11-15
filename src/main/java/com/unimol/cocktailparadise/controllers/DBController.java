@@ -15,7 +15,7 @@ public class DBController {
     @GET
     @Path("refresh")
     @Produces(MediaType.TEXT_PLAIN)
-    public String refresh(){
+    public String refresh() {
         return dbService.dbRefresh();
     }
 }

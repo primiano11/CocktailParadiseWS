@@ -3,12 +3,10 @@ package com.unimol.cocktailparadise.services;
 import com.unimol.cocktailparadise.entities.Drink;
 import com.unimol.cocktailparadise.entities.User;
 import com.unimol.cocktailparadise.util.HibernateUtil;
-import com.unimol.cocktailparadise.util.Utilities;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.LogicalExpression;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 
@@ -54,7 +52,7 @@ public class DrinkService {
     }
 
 
-    public Boolean isDrinkAlreadyExisting(int idDrink, int userId){
+    public Boolean isDrinkAlreadyExisting(int idDrink, int userId) {
 
         Boolean flag = false;
         Session session = null;
@@ -67,8 +65,8 @@ public class DrinkService {
         User user = (User) criteria.uniqueResult();
 
         List<Drink> userDrinks = user.getDrinks();
-        for (Drink d:userDrinks) {
-            if(d.getIdDrink() == idDrink){
+        for (Drink d : userDrinks) {
+            if (d.getIdDrink() == idDrink) {
                 return true;
             }
         }
@@ -77,7 +75,7 @@ public class DrinkService {
         return flag;
     }
 
-    public void deleteDrink(int idDrink, int userId){
+    public void deleteDrink(int idDrink, int userId) {
 
         Session session = null;
         int offsetToDelete = 0;
@@ -91,8 +89,8 @@ public class DrinkService {
         User user = (User) criteria.uniqueResult();
 
         List<Drink> userDrinks = user.getDrinks();
-        for (Drink d:userDrinks) {
-            if(d.getIdDrink() == idDrink){
+        for (Drink d : userDrinks) {
+            if (d.getIdDrink() == idDrink) {
                 offsetToDelete = d.getId();
             }
         }
@@ -105,7 +103,7 @@ public class DrinkService {
 
     }
 
-    public List<Drink> getAllDrinks(int userId){
+    public List<Drink> getAllDrinks(int userId) {
 
         Session session = null;
         int offsetToDelete = 0;
@@ -123,7 +121,7 @@ public class DrinkService {
 
     }
 
-    public void deleteAllDrinks(int userId){
+    public void deleteAllDrinks(int userId) {
 
         Session session = null;
 
